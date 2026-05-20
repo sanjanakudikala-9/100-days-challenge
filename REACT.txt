@@ -1,0 +1,251 @@
+react :
+react is js library 
+we use it when we want to develop any single page application 
+single page application >>> ui doesnot load when we navigate from one page to another page 
+we use jsx in react , jsx >> javascript xml 
+we can divide website into components 
+dividing website into components helps in seperating in logic >> also helps in developing the components 
+independently 
+react also helps in routing >>> by using react router dom >> routing refers to navigating from one page to another page 
+npm >> node package manager  >> used to install, manage and publish packages
+npx  >> used to run packages without installing them globally >> execute without installing
+Used to execute packages without globally installing them.
+
+Node.js is the runtime environment. 
+1.install node 
+>> in cmd >> npm >> give some details about node >> this gives assurance that node is installed 
+>> check npx 
+>> npm --version , npx version
+currently youtube is also spa previously youtube used to reload 
+creating and configuring the folder >> open it it in vs code and in the terminal >> npx create-react-app myapp >> we used npx 
+for creating and configuring the folder because this means execute >> we don't install any package 
+but we setup environment to run appn setup files creat-react-app is a tool 
+generally npx is used to execute packages without installing but when we use create-react-app tool then it installs
+some dependencies like node_modules then it is something similar to npm >> this is because the main purpose of npm is
+installing , managing and publishing the packages 
+so when we execute create-react-app tool using then npx it does uses npm internally to install node_modules and others 
+cd myapp >> npm start 
+npm start >> starts the development server 
+fav ico contains the mini logo as icon on the website web page at the top 
+whenever we run the application we can view our appn in  2 links :
+local >> localhost :3000
+on the same network : some other link >> device on samenetwork can view the appn >> device 
+main content will be in app.js  
+content in app.js is shown on the screen 
+whenever we want write anything that is related to js can we written in app.js using {content written within these 
+are considered as js } >> </div>
+ calculates the addition >>                   <div>{12+32}</div>
+react can build or create class based components and function based components 
+// import logo from './logo.svg';
+import img from './img.png';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+
+      <header className="App-header">
+                            <div>{12+32}</div>
+  
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+        <img src={img} className="App-logo" alt="logo1"/>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Sanjana kudikala
+        </a>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+whenever we want to print the content on the screen using app.js within the function <p>hello</p> directly entering 
+this don't helps in printing we should wrap the whole content like <div></div> etc
+<div><p>hello</p></div> , if we don't want to wrap it in such just use empty opening and closing <></> to wrap the 
+content 
+generally we can import i.e we can use link of bootstrap to use in it our html code 
+bootstrap was rewritten especially for react 
+to use bootstrap in react we need to install : npm install react-bootstrap bootstrap
+paste the cdn and script link in index.html >> main page 
+
+maintain a folder inside src (MyComponents) which contains all the components of the page >> header.js,footer.js etc
+rafc >> in js page gives basic syntax 
+import the things that have been created within MyComponents in App.js >> as this is the main file 
+before importing the file wrap them into <><Header/></> this and then import function_name from path 
+the alignment of the components are based on the wrapping of the components 
+return (
+    <><Header/>
+    <Task1/>
+        <Footer/>
+</>
+);
+while importing : import Footer from  './MyComponents/Footer.js' , 
+if we use default while exporting then no need to use {} in  import
+if we don't use default in exporting then import {Footer} from  './MyComponents/Footer.js'
+props >> javascript object , we call it in child component 
+pass data from parent component to child component , naming it in App.js 
+  <><Header title="Code Route"/> >>> 
+  by using prop keyword into the function and use the keyword whereever you want to use the title prop.title 
+  function_name(props){ >> function_name({title,name,id})
+  >> {props.title} we can use in this way when we want to pass single parameter 
+  }
+  if we want to pass n number of parameter into the function the directly use {title,..,..} as param
+  but using props is best way 
+we can use ternary operator in the code 
+we can define type of the data in the code this helps in finding out the error is something invalid is mention
+if we are dealing with Header.js :
+fst import prop-type and then use it Header.propTypes={title:PropTypes.string} >> if we mention anything other than string 
+then we get error in console 
+we can give any default name too Header.defaultProps={title:"Mention title here"}
+if we are not using prop make use of parent class in child class use {} and mention n number of parameters from 
+parent component to child 
+
+>> everything that is mention in app.js is seen on the page of the appn similarly we can mention any part as true or false
+eg:    <><Header title="Code Route" searchBar={true}/> >> mentioned true so we can see it on then screen and 
+in the header component : {prop.searchBar?<Form className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>:"no search bar found"}
+        </Navbar.Collapse>
+      </Container>
+    </Navbar> terenary opt given if we mention false in app.js then checking the condition in header.js the output is 
+	obtained >> if true searchbar is shown else no search bar found  this  is to validate the condition 
+
+
+
+as we mentioned above we use prop is child component that is used to link the component with the parent one 
+but React 18+ doesnot support prop keyword instead it allows direct calling within the parenthesis
+function_name({title="Your title"}) so no need to mention it before export content 
+instead of : Header.defaultProps={
+  title:"Your title"
+} we use it in function itself and this doesnot effect parameter datatype declaration of the prop
+we should remove prop everywhere while calling just use {title}, we should mention all the parameters that we have mentioned 
+inside the function 
+
+we can use n number of div tags inside one main wrapper without mentioning wrapper we get error
+map() converts array into jsx element it is used mainly in displaying lists dynamically whenever we use map 
+we use use unique keys 
+4. render={() => } outdated
+
+You wrote:
+
+render()=>{}
+
+Old syntax.
+
+Modern React Router:
+
+<Route path="/about" element={<About />} />
+State : it is used to store data that can change over time and automatically update ui 
+without state >> react doesnot re-render and ui does not update 
+
+with state >> it provides useState() >>> automatic update ui and component re-renders
+states make apps interactive > chat apps, live updated , toggle 
+syntax : 
+import {useState} from 'react'
+const [stateVariable,setFunction] = usestate(initialValue);
+
+const[name,setName] = useState("React");
+setName("React js")
+name >> current value , setName it is the function used to update value 
+component is re-render with React js
+
+we can use css inside javascript using object and apply it using style attribute 
+
+in js inside func >> let footerStyle(variable) = 
+{
+position:"absolute",
+height:"100vh",
+width:"100%"
+}
+and we should call it :
+return({
+style={footerStyle}
+})
+
+we can use external css file too by importing the file 
+e.preventDefault helps in prevents the reloading of the page 
+i.e the default behavoiur
+
+instead of using props to link parent and child components 
+we are using {} >> this is called object destructuring 
+
+localStorage.() >> used to store data locally 
+
+
+to use react routers >> npm install react-router-dom 
+
+insdie the main wrapper we use router to wrap the content in the result 
+for rendering >> navigate to another page without reloading 
+insider router we have switch, route 
+in route we have path based on the matched path the page is navigated 
+but the problem is if we use path="/" render()=>{} and path="/about" render()=> 
+then in case of /above too / is consider and it navigates to path=/ page 
+instead we should use exact path wew should import
+whenever we use react routers then we should use to instead of href for links 
+and <LINK> for anchor tags too 
+
+useEffect is a React Hook used to perform side effects in functional components.
+
+What is a Side Effect?
+
+Things like:
+
+API calls
+fetching data
+localStorage operations
+timers
+DOM updates
+event listeners
+
+Run only once after first render
+
+React Router is used for:
+
+Navigation between pages in a React application
+
+
+5. exact no longer needed in React Router v6+
+
+You wrote:
+
+we should use exact path
+
+In React Router v6+, routes are exactly matched automatically.
+
+No need for exact.
+
+React still supports props.
+But defaultProps for functional components is not preferred in React 18/19.
+Modern React uses destructuring with default values.
+
+
+virtual dom :
+react creates virtual copy of the real dom , 
+when state changes then virtaul dom is compared with the real dom and only the 
+changed parts are updated(in real dom) instead of whole 
+this helps improving the performance
+
+component types : functional component, class component
+modern react used functional components with hooks 
+
+Hooks are special React functions used in functional components.
+Hooks start with "use".
+Examples:
+useState
+useEffect
+useRef
+useContext 

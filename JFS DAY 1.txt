@@ -1,0 +1,52 @@
+JFS :
+java full stack 
+> class,obj,method,... java core concepts 
+> collection framework > used for grouping objects > list,Set,Queue,HashSet..etc
+generics helps in type safety and reusability
+
+wild card in java is used to write generic code >> to increase the reusability of the code 
+while creating any ds >> List<Integer> list = new ArrayList<>(); and while using it in the method >> void use(List<Integer> list)
+only specific datatype is mentioned instead we use "?" instead of declaration of the datatype in the method 
+this helps in dealing with different datatypes
+<?> any type 
+<? extends T> >> (T or any child datatype of T)
+any type related to T or datatype that is under inheritance of T(below the inheritance tree of T)
+this only supports reading >> we can't add because the compiler don't the exact datatype
+<? super T> >> T datatype or any parent of T 
+this supports write because the compiler know it exact datatype because inheritance is in upward direction 
+so we can add elements but reading is limited 
+
+java comparable interface used to automatically sort elements without using any external comparators
+it contains compareTo() method to compare curr ele with otherss
+it is used in Collections.Sort() and Arrays.Sort() 
+
+
+Thread >> lightweight independent unit of execution inside process 
+multiple threads are ran simultaneously > allows parallel execution >> increase the utilization of the cpu 
+each thread independently(seperately but shares same memory)
+
+in 2 ways we can create threads 
+1) thread class >> create thread by extending Thread class >> we don't explicitly create Thread class to extend 
+it is internally created inside java package 
+the disadvantage >> when we extend Thread we can't extend other classes 
+thread is a worker and runnable is task 
+2) runnable interface >> interface class implements runnable  > inside this we use Thread to create obj to run task 
+start() > creates thread 
+run() > task logic
+sleep(ms) >> pause thread 
+join() > wait for thread
+setPriority() >> setting up the priority
+
+real life appn >> web server(handling mutliple users) , gaming , chat applications , banking system 
+
+
+ 
+ 
+synchronization >> helps in avoiding the conflicts in mutlithreading as multiple threads share same memory 
+3 ways of synchronization 
+1)synchronized block :Synchronized blocks allow locking only a specific section of code instead of the entire method. This makes the program more efficient by reducing the scope of synchronization.
+2)synchronized method : used to lock an entire method so that only one thread can execute it at a time for a particular object
+but reduce performance 
+3) static synchronization :used when static data or methods need to be protected in a multithreaded environment.
+
+Locks are advanced > instead of synchronization we use locks 
