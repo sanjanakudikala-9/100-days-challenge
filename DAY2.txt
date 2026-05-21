@@ -1,0 +1,123 @@
+POWER BI :
+power bi used to analyse data and used to take decision in the business 
+
+import excel file > load data > generally real life data will contain error it should be cleaned 
+in help > about > we can see the version of power bi > we can auto update 
+on the right side in the power bi click data so we can see all the tables which are in the excel 
+sheet name of the tables are seen 
+but we explicitly tell power bi that there are connections between the tables this process is data modeling 
+on the left side of the screen we can see model view > in that we have class digrams with connections
+generally power bi use auto detect technique to make relationships between tables based on the same column names
+if we want to explicitly mention the relationships drag and drop col name on the col that we want to connect with 
+if all the tables are connected to single table then the schema is said to be Star Schema 
+in business analysis mostly we experince with the star schema , and some of its variations 
+if there are more tables or entities with star structure then it is called as snowflake
+in that star schema >> 1 fact table >> the table that have connection with all the remaining tables
+and outer tables are dimension tables 
+DataModeling is main step 
+in the leftside of the screen above model view we have table view we can have look on tables from there 
+selecting any visualization way from build and selecting columns give the output on the screen
+
+1) product,amount >> we use table structure 
+if we click on column name then it get sorted(asc)(desc), if we click again it get sorted in opp (then desc )(asc)
+in format tab inside visualization we can make change in visualization i.e we can add data labels etc 
+we used stacked column chart for visualization > to get data of chocolates country-wise we used slicer (something like 
+looks like check box but act as a radio button ) add countries to that selecting that shows country-wise data 
+if we want to select more than 1 option we should use cntrl button 
+slicer controls everything in the page not only the stack column chart but also other visualization charts that we used 
+not only the slicer every visualization chart interact with each other 
+
+
+INTRODUCTION TO DAX :
+
+
+1)CALCULATE PROFIT > to calculate profit we don't have any col
+we have cost per box col,pid in product table
+amount we got after selling those products in shipment table and number of boxes sold 
+to calculate profit =(Amount obtained by selling products)-(cost per box*number of products sold)
+we will create new column called selling price we can do it using transform data option 
+generally we do it before data modeling 
+when we click on transform data it is navigated to power query and in that each table is treated as query 
+use merge queries option to make link 
+when we use merge queries then it shows join option by default it makes left join we can change the join 
+after merging each row has it own table we can filter them with the require column 
+we joined shipment with products > we added cost per box col to shipment now creating new col selling price by multiplying
+cost per box with number of products by perfoming multiplication 
+click add column and select columns PERFORM STANDARD OPERATION TO GET RESULT 
+
+DRAG AND DROP ONLY USEFUL FOR SIMPLE OPERATIONS 
+we use DAX new lang in power bi to perform such calculations 
+
+click on shipments table add new measure >> it is not a new column but a new parameter based on that we can visualize data
+we get a code space above 
+every time when we create measure we neeed to click on the table and click new measure
+Total amount = sum(shipment[amount])
+Total cost = sum(shipments[selling price]) 
+profit = [total amount]-[total cost] > when we are using measures then just click on [ we can see the suggestion 
+
+select the table > select any column right click on the column > conditional formatting give visualization for column 
+
+while we are dealing with data modeling > when there is any table that contains dates 
+right click on the table in table view > mark as date table > enable this 
+
+2) COUNT SHIPMENTS :
+total = countrows(shipments) >> caldate vs total > line graph 
+
+when you want to place any col in y and x axis drag col and place new y and x axis in visualization under build 
+
+
+3) amount per box : 
+while using division some times that may leads to error if there are no sales then it leads to error 
+so power bi has safe division function 
+amount per box = total amount / total boxes >> in case boxes are 0 division error
+instead of this use amount per box = DIVIDE([TOTAL AMOUNT],[TOTAL BOXES])
+
+
+4) top most profitable people 
+
+filter panel is used to add extra filters 
+we can filter sale_persons,profit using table while we are performing operations it is better to use tables 
+if we want only data of sales_person ,profit from india then we can use slicer and select geo location india 
+this is space consuming instead we can use filter panel in it
+
+when we use filter panel then it is interactive when we share our data the filter panel is seen by the viewers and then
+can change the filter and check out remaining data 
+top n > mention n value so top n values are seen similary with bottom n values tooo 
+
+
+5)comparing year
+generally when we sort only years it is ok when we use month nums and yr thats correct 
+but when we use month names and yr then sorting takes place based on alphabetic order not on chronological order 
+i.e april,aug,dec, ... 
+so when we are dealing with the month name fst sort the table in table view with month num 
+
+lastyr = calculate([total_amount],sameperiodlastyear('Calendar'[cal_date])) >> sameperiodlastyear give values by comparing 
+exact the cal_date (last yr) 
+we can change line format by using format panel 
+
+
+
+filter last 13 months >>. issue ????
+
+
+
+
+
+
+to analyse the data to prepare a report
+>> intially requirement analysis 
+ask about time period >> window >> eg : 2023-2026 
+1) overall 
+2) previous yrs 
+3)various countries 
+4)shipment distribution 
+5)top people , products 
+
+
+
+color >>> we can use color theme inside power bi itself based on the requirement 
+to use ur own template in visualization > format page > change canvas > we can change height and width 
+in canvas wallpaper select image and set transparency 0% 
+to get data month by month using cal_date then transform data by adding column add start of the month 
+so all the dates of the months are assigned as 1 jan 2025 for all 31 days , 1-feb-2025 for all 28 days....
+ 
