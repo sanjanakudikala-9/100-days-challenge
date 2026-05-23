@@ -1,0 +1,104 @@
+DATA AUTOMATION - INTERNSHIP - PROJECT :
+
+Automated Student Performance Analytics System
+During my 15-day internship at MSME, I worked on a Data Automation project focused on 
+educational institute analytics. The manual process of tracking student performance across 
+terms via Excel was highly inefficient. I was tasked with building an automated pipeline: 
+setting up a relational MySQL database to store the data securely, and then connecting it 
+to Power BI using DAX to automatically calculate core KPIs like pass/fail percentages, 
+subject averages, and top-performing students. This eliminated manual spreadsheet calculations entirely.
+
+
+
+DATA AUTOMATION : 
+ETL : extract , transform , load 
+extract data from database/excel 
+transform data into suitable format 
+load the data into mysql/power bi 
+
+if we use power bi in our project we don't need to click refresh instead it automatically get refreshed i.e we configure 
+power bi gateway to automatically get refreshed so that fresh data is extracted frm the database without any 
+human intervention 
+
+using mysql constraints incorrect data is stopped before reaching the dashboard for visualization 
+
+DATA : 
+STUDENT.CSV : 
+StudentID,FirstName,LastName,Gender,GradeLevel
+101,Rahul,Sharma,Male,Class 10
+102,Sruthi,Rao,Female,Class 10
+103,Amit,Verma,Male,Class 10
+104,Priya,Reddy,Female,Class 10
+105,Sneha,Patel,Female,Class 10
+
+MARKS.CSV : 
+StudentID,Subject,MarksObtained,MaxMarks,ExamTerm
+101,Mathematics,85,100,Term 1
+101,Science,78,100,Term 1
+102,Mathematics,92,100,Term 1
+102,Science,95,100,Term 1
+103,Mathematics,35,100,Term 1
+103,Science,42,100,Term 1
+104,Mathematics,88,100,Term 1
+104,Science,81,100,Term 1
+105,Mathematics,45,100,Term 1
+105,Science,38,100,Term 1
+
+
+Expected interview questions : 
+>> why did you used mysql instead of excel to store data >> excel struggles in dealing with large volume of data
+mysql allows tables to maintain relationship with one another , allows cascading 
+
+DAX : DATA ANALYSIS EXPRESSION 
+powerbi >> only basic operations 
+DAX >> used to build dynamic business logic --> pass or fail >> student 
+using DAX AND FILTERS we can find top n students based on the percentages 
+
+What was the biggest challenge you faced during this automation?
+
+Answer: "Handling missing or mismatched data types during the initial data import from CSV 
+to MySQL. I had to clean the data types and ensure that StudentID matched perfectly across
+ both tables to maintain referential integrity."
+
+
+
+in XAMPP : 
+USE StudentAnalytics;
+
+-- Create the master table for student profiles
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Gender VARCHAR(10),
+    GradeLevel VARCHAR(10)
+) ENGINE=InnoDB;
+
+ENGINE=InnoDB >>> ensures the relationship between the tables 
+
+
+-- Create the table for tracking marks
+CREATE TABLE Marks (
+    MarkID INT AUTO_INCREMENT PRIMARY KEY,
+    StudentID INT,
+    Subject VARCHAR(50),
+    MarksObtained INT,
+    MaxMarks INT DEFAULT 100,
+    ExamTerm VARCHAR(20),
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID)
+) ENGINE=InnoDB;
+
+
+import saved student.csv and marks.csv file into xampp after selecting the table 
+  
+installing connector from mysql > you are using XAMPP on Windows, Power BI Desktop needs a specific driver to 
+communicate with your local MySQL database server.
+connector helps xampp and power bi to communicate 
+
+ESTABLISHING CONNECTION BETWEEN POWER BI AND MYSQL 
+> select data source 
+open power bi > get data > select mysql 
+
+FACED ISSUE WHILE CONNECTING MYSQL WITH POWER BI EVEN AFTER INSTALLING THE CONNECTOR 
+installed connector/odbc >> open power bi > get data from other sources 
+before that 
